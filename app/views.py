@@ -7,8 +7,7 @@ from django.shortcuts import render
 def file_list(request, date=None):
     template_name = 'index.html'
     files = []
-    # Реализуйте алгоритм подготавливающий контекстные данные для шаблона по примеру:
-    for f in os.listdir(path=FILES_PATH):
+     for f in os.listdir(path=FILES_PATH):
         t_details = os.stat(f'{FILES_PATH}/{f}')
         info = {'name': f, 'ctime': dt.datetime.fromtimestamp(t_details.st_ctime),
                 'mtime': dt.datetime.fromtimestamp(t_details.st_mtime)}
@@ -32,7 +31,6 @@ def file_list(request, date=None):
 
 
 def file_content(request, name=None):
-    # Реализуйте алгоритм подготавливающий контекстные данные для шаблона по примеру:
     if name in os.listdir(path=FILES_PATH):
         content = ''
         with open(f'{FILES_PATH}/{name}', newline='') as file:
